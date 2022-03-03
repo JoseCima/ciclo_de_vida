@@ -46,16 +46,21 @@ class MainActivity : AppCompatActivity() {
     //Se ejecuta en cuanto este la transición de la aplicación de ser visible a no ser visible al usuario
     override fun onPause() {
         super.onPause()
-        Toast.makeText(this, "En transición", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "En transición - onPause()", Toast.LENGTH_SHORT).show()
     }
 
     override fun onStop() {
         super.onStop()
-        Toast.makeText(this, "Aplicativo oculto", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Aplicativo oculto - onStop()", Toast.LENGTH_SHORT).show()
     }
 
     override fun onResume() {
         super.onResume()
-        Toast.makeText(this, "Aplicativo visible", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Aplicativo visible - onResume()", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Toast.makeText(this, "App Destruida - onDestroy()", Toast.LENGTH_SHORT).show()
     }
 }
