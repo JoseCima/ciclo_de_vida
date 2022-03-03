@@ -8,7 +8,7 @@ import android.widget.Toast
 class MainActivity : AppCompatActivity() {
 
     //Antes de ejecutarse
-    var nombre = "José"
+    var nombre = "Primer Nombre: José"
     val NOMBRE = nombre //Clave para identificar la clave que vamos a guardar
 
     //Se ejecuta en cuanto cargue la app
@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
         boton.setOnClickListener {
             //Al girar la pantalla Android detecta que es un cambio de estado. Destruyendo la actividad inicial
-            nombre = "Guillermo"
+            nombre = "Segundo Nombre: Guillermo"
             Toast.makeText(this, nombre, Toast.LENGTH_SHORT).show()
         }
     }
@@ -41,5 +41,21 @@ class MainActivity : AppCompatActivity() {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
          outState?.putString(NOMBRE, nombre)
+    }
+
+    //Se ejecuta en cuanto este la transición de la aplicación de ser visible a no ser visible al usuario
+    override fun onPause() {
+        super.onPause()
+        Toast.makeText(this, "En transición", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Toast.makeText(this, "Aplicativo oculto", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Toast.makeText(this, "Aplicativo visible", Toast.LENGTH_SHORT).show()
     }
 }
